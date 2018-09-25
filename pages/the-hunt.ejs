@@ -1,0 +1,14 @@
+			<table class="data thehunt">
+				<% detailRequest.regions.forEach((region) => { %><tr>
+					<th><h2 data-uri="<%= region.uri %>"><%= region.name %></h2></th>
+					<th><abbr title="B Rank">B</abbr></th>
+					<th><abbr title="A Rank">A</abbr></th>
+					<th><abbr title="S Rank">S</abbr></th>
+				<tr>
+				<% region.zones.forEach((zone) => { %><tr>
+					<td><h3 data-uri="<%= zone.uri %>"><%= zone.name %></h3></td>
+					<td><% zone.b.forEach((mark) => { %><a href="<%= detailPage.uri[detailPage.lang] + "/" + mark.uri %>"><%= mark.name %></a> <% }) %></td>
+					<td><% zone.a.forEach((mark) => { %><a href="<%= detailPage.uri[detailPage.lang] + "/" + mark.uri %>"><%= mark.name %></a> <% }) %></td>
+					<td><% zone.s.forEach((mark) => { %><a href="<%= detailPage.uri[detailPage.lang] + "/" + mark.uri %>"><%= mark.name %></a> <% }) %></td>
+				</tr><% }) %><% }) %>
+			</table>

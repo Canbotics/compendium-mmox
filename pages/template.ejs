@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="<%= detailPage.lang %>">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="<%= detailPage.meta.desc %>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><%= detailPage.meta.title %></title>
+
+	<link rel="canonical" href="<%= dataSite.uri.rootSite + detailPage.uri[detailPage.lang] %>" />
+	<% for (let langCode in detailPage.uri) { -%><link rel="alternate" hreflang="<%= langCode %>" href="<%= dataSite.uri.rootSite + detailPage.uri[langCode] %>" />
+	<% } -%>
+
+	<link rel="stylesheet" type="text/css" href="<%= dataSite.uri.rootAsset %>mmox.css" />	
+</head>
+<body>
+	<header>
+		<div>
+			<h1><%= dataSite[detailPage.lang].title %></h1>
+			<nav>
+				<h2>Site Navigation</h2>
+				<ul role="menubar"><% if (detailPage.lang == "en") { %>
+					<li role="menuitem"><a href="/en"<% if (detailPage.nav.segment == "index") { %> aria-current="page"<% } %>>Home</a></li>
+					<li role="menuitem"><a href="/en/dungeons"<% if (detailPage.nav.page == "dungeon") { %> aria-current="page"<% } %>>Dungeons</a></li>
+					<li role="menuitem"><a href="/en/areas"<% if (detailPage.nav.page == "area") { %> aria-current="page"<% } %>>Areas</a></li>
+					<% } else if (detailPage.lang == "fr") { %>
+					<li role="menuitem"><a href="/fr"<% if (detailPage.nav.segment == "index") { %> aria-current="page"<% } %>>Accueil</a></li>
+					<li role="menuitem"><a href="/fr/donjons"<% if (detailPage.nav.page == "dungeon") { %> aria-current="page"<% } %>>Donjons</a></li>
+					<li role="menuitem"><a href="/fr/domaines"<% if (detailPage.nav.page == "area") { %> aria-current="page"<% } %>>Domaines</a></li>
+					<% }; %><li role="menuitem">
+						<a href="/">Language</a>
+						<ul role="menubar">
+							<li role="menuitem"><a href="<%= detailPage.uri.en %>"<% if (detailPage.lang == "en") { %> aria-current="page"<% } %>>English</a></li>
+							<li role="menuitem"><a href="<%= detailPage.uri.fr %>"<% if (detailPage.lang == "fr") { %> aria-current="page"<% } %>>Français</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<main>
+		<div>
+			<header>
+				<h1><%= detailPage.meta.heading %></h1>
+			</header>
+			
+<%- include(detailPage.template + ".ejs") %>
+		</div>
+
+		<footer>
+			<h2>Legal</h2>
+			<div><% switch (detailPage.lang) { case "fr": %>Conception du site Web et code sous-jacent &copy; 2019 OciCat Media.<% ;break;default: %>Site design and underlying code &copy; 2019 OciCat Media.<% ;break;} %></div>
+			<div><%- dataSite[detailPage.lang].disc %></div>
+<% if (detailPage.disc.length) { -%>
+			<ol class="disclaimer">
+<% detailPage.disc.forEach(function(disclaimer,disclaimerNumber) { -%>
+				<li id="dis<%= disclaimerNumber + 1 %>"><sup><%= disclaimerNumber + 1 %></sup> <%= disclaimer %></li>
+<% }) -%>
+			</ol>
+<% } -%>
+		</footer>
+	</main>
+
+	<script src="<%= dataSite.uri.rootAssetGlobal %>jquery-3.3.1.min.js"></script>
+	<script src="<%= dataSite.uri.rootAsset %>ffxiv.js"></script>
+</body>
+</html>

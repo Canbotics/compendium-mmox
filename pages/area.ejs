@@ -1,0 +1,6 @@
+			<% detailRequest.regions.forEach((region) => { %><section>
+				<h2 data-uri="<%= region.uri %>"><%= region.name %></h2>
+				
+				<ul><% region.areas.forEach(function(area) { %><li class="<%= area.type[0].toLowerCase() %>"><a href="<%= detailPage.uri[detailPage.lang] + "/" + area.uri %>"><%= area.name %></a></li><% }); %></ul>
+			</section>
+			<% }) %>

@@ -1,0 +1,49 @@
+			<% if (detailRequest.uri.length) { %><div class="thehunt profile">
+				<img src="<%= dataSite.uri.rootAsset %>ffxiv/the-hunt/<%= detailRequest.uri %>.jpg" width="400" height="400" alt="Screenshot of <%= detailRequest.name %>">
+				<table>
+					<tr>
+						<th>Rank</th><td><%= detailRequest.rank %></td>
+					</tr>
+					<tr>
+						<th>Zone</th><td><a href="/<%= detailPage.lang %>/areas/<%= detailRequest.zone.uri %>"><%= detailRequest.zone.name %></a></td>
+					</tr>
+					<tr>
+						<th>Expansion</th><td><%= detailRequest.expansion %></td>
+					</tr>
+					<tr>
+						<th>Spawn Time</th><td><%= detailRequest.respawn %> <%= detailRequest.respawnUnit %><% if (detailRequest.maint !== null) { %><br><% switch (detailPage.lang) { 
+								case "fr": -%><%= detailRequest.maint %> <%= detailRequest.respawnUnit %> après la réinitialisation<% ;break;
+								case "de": -%><%= detailRequest.maint %> <%= detailRequest.respawnUnit %> nach dem Zurücksetzen<% ;break;
+								case "jp": -%>リセット後<%= detailRequest.maint %><%= detailRequest.respawnUnit %><% ;break;
+								default : -%><%= detailRequest.maint %> <%= detailRequest.respawnUnit %> after reset<% }} %></td>
+					</tr><% if (detailRequest.spawn !== null) { %>
+					<tr>
+						<th>Spawn Condition</th><td><%= detailRequest.spawn %></td>
+					</tr><% } %>
+				</table>
+			</div>
+			
+			<aside class="comment">
+				<h3>Comments</h3>
+				<article>
+					<header>
+						<h4>'Tis but a scratch!</h4>
+						<small>Posted by <a href="">Name</a> <time>3 hours ago</time></small>
+					</header>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed mauris non nisi convallis sollicitudin eu non est. Fusce eleifend, ex sit amet tempor pharetra, metus quam hendrerit dolor, sed auctor arcu ligula ut sapien. Nulla posuere neque non lobortis convallis. Vivamus laoreet sapien id mi interdum, vitae pulvinar ipsum molestie. Nunc suscipit placerat neque quis tristique. Morbi non vestibulum leo, vitae dignissim metus. Fusce sed ligula diam. Ut eget neque efficitur, tempus nisi ultricies, luctus enim. Fusce quis facilisis nisi. Pellentesque interdum rhoncus metus, at aliquet ipsum aliquet eget. Praesent volutpat interdum leo, vel iaculis tellus volutpat vel. Praesent condimentum arcu eget elementum feugiat. Cras pretium mauris sed tellus dictum, in suscipit nisl accumsan. Proin massa mi, aliquam at quam porttitor, pellentesque fermentum mi. Duis sollicitudin elementum finibus. Donec ultrices leo vel neque scelerisque, vestibulum luctus massa rutrum.</p>
+				</article>
+				<article>
+					<header>
+						<h4>Hardest fight ever</h4>
+						<small>Posted by <a href="">Name</a> <time>3 hours ago</time></small>
+					</header>
+					<p>Suspendisse nec lectus dignissim, accumsan tellus vel, hendrerit elit. Vestibulum eleifend odio interdum ipsum mollis dignissim. In dapibus congue nisl, ut pellentesque ex posuere sed. Morbi pulvinar orci in felis consequat, et interdum nibh tincidunt. Donec vel arcu vitae justo eleifend vulputate. Proin congue mauris at ante cursus, in aliquet risus dictum. Aenean finibus mattis velit, vel porttitor purus tempor aliquet. Cras placerat, dui vel commodo vestibulum, eros augue mollis purus, in ultrices mi erat in lectus. Suspendisse commodo lacus in dui ultricies, eget pretium sem blandit. Sed fermentum tellus metus, sed consequat tellus porta vel. Praesent sit amet elementum tellus. Fusce vitae tristique elit, eget maximus nibh. Suspendisse fringilla aliquet lorem, sed pulvinar velit fermentum id. Cras nunc purus, consequat ut urna ac, finibus volutpat ante.</p>
+				</article>
+				<article>
+					<header>
+						<h4>Banana</h4>
+						<small>Posted by <a href="">Name</a> <time>3 hours ago</time></small>
+					</header>
+					<p>Integer facilisis, risus vel hendrerit pellentesque, tellus orci accumsan nunc, at iaculis metus leo quis orci. Maecenas eget ullamcorper odio. Etiam luctus elementum eleifend. Etiam eu condimentum eros. Pellentesque erat nisl, aliquet nec turpis id, viverra dapibus urna. Proin tempus euismod arcu, sed pretium turpis cursus ut. Praesent imperdiet placerat felis, aliquam egestas ligula malesuada eu. Donec in molestie tortor. Pellentesque vulputate massa quis tempor malesuada. Curabitur mollis finibus rutrum. Etiam lacus quam, feugiat nec convallis et, volutpat sit amet sapien. Vestibulum lobortis sagittis turpis id gravida. Donec vitae mattis mi, id scelerisque ipsum. Vestibulum consequat gravida augue a maximus. Maecenas a urna facilisis, venenatis dui nec, efficitur nibh. Praesent ultricies felis et arcu viverra, sed faucibus arcu consequat.</p>
+				</article>
+			</aside><% } else { %><p class="error">That mark is not in the compendium.</p><% } %>
