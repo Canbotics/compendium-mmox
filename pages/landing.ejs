@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="description" content="Select Language / Choisir la langue">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><%= dataSite.title.en %> / <%= dataSite.title.fr %></title>
+	<title><%= dataSite.en.title %>: Select Language / <%= dataSite.fr.title %> : Choisir la langue</title>
 
 	<link rel="alternate" hreflang="en" href="<%= dataSite.uri.rootSite %>/en" />
 	<link rel="alternate" hreflang="fr" href="<%= dataSite.uri.rootSite %>/fr" />
 
-	<link rel="stylesheet" type="text/css" href="<%= dataSite.uri.rootAsset %>canbotics-coffee.css" />	
+	<link rel="stylesheet" type="text/css" href="<%= dataSite.uri.rootAsset %>mmox.css" />	
 </head>
 <body>
 	<header>
@@ -29,8 +29,8 @@
 			</header>
 			
 			<nav>
-				<a href="/en/" hreflang="en">English</a>
-				<a href="/fr/" hreflang="fr">Français</a>
+				<a href="/en" hreflang="en">English</a>
+				<a href="/fr" hreflang="fr">Français</a>
 			</nav>
 		</div>
 
@@ -42,7 +42,7 @@
 		</footer>
 	</main>
 
-	<script src="../asset.canbotics.ca/global/jquery-3.3.1.min.js"></script>
-	<script src="canbotics-smithy.js"></script>
+	<script src="<%= dataSite.uri.rootAssetGlobal %>jquery-3.3.1.min.js"></script>
+	<script src="<%= dataSite.uri.rootAsset %>mmox.js"></script>
 </body>
 </html>
